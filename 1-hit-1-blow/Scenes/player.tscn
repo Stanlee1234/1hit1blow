@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://mpthmkq31jm8"]
+[gd_scene load_steps=56 format=3 uid="uid://mpthmkq31jm8"]
 
 [ext_resource type="Script" uid="uid://dmxd365lu5rvf" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://g6ydsp6vf3nb" path="res://Assets/characters/player.png" id="2_6t5aa"]
@@ -413,14 +413,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_cvnsp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.8146973e-06, 0)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
 scale = Vector2(1.1901041, 1.1901041)
 sprite_frames = SubResource("SpriteFrames_6t5aa")
 animation = &"side_walk"
 frame_progress = 0.73740935
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_cvnsp")
